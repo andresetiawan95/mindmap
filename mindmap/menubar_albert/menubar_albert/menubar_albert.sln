@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "menubar_albert", "menubar_albert\menubar_albert.csproj", "{5728C944-E6BA-4B21-9604-1241C40D881E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5728C944-E6BA-4B21-9604-1241C40D881E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5728C944-E6BA-4B21-9604-1241C40D881E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5728C944-E6BA-4B21-9604-1241C40D881E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5728C944-E6BA-4B21-9604-1241C40D881E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
