@@ -53,6 +53,8 @@
     <Compile Include="DefaultToolbar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DrawingObject.cs" />
+    <Compile Include="DrawingState.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IconSet.Designer.cs">
       <AutoGen>True</AutoGen>
