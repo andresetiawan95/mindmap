@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultPanel.cs">
+    <Compile Include="DefaultMenubar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DefaultToolbar.cs">
@@ -56,8 +56,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IconSet.resx</DependentUpon>
     </Compile>
-    <Compile Include="IPanel.cs" />
-    <Compile Include="ITool.cs" />
+    <Compile Include="IMenubar.cs" />
+    <Compile Include="IMenuItem.cs" />
     <Compile Include="IToolbar.cs" />
     <Compile Include="IToolbarItem.cs" />
     <Compile Include="MainWindow.cs">
