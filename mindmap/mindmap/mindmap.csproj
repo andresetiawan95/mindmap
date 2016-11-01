@@ -53,6 +53,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IconSet.resx</DependentUpon>
     </Compile>
+    <Compile Include="IPanel.cs" />
+    <Compile Include="ITool.cs" />
     <Compile Include="IToolbar.cs" />
     <Compile Include="IToolbarItem.cs" />
     <Compile Include="MainWindow.cs">
