@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DefaultToolbar.cs">
       <SubType>Component</SubType>
     </Compile>

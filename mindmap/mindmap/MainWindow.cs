@@ -15,6 +15,7 @@ namespace mindmap
     public partial class MainWindow : Form
     {
         private IToolbar toolbar;
+        private IPanel panel;
 
         public MainWindow()
         {
@@ -44,6 +45,10 @@ namespace mindmap
 
             #endregion
 
+            #region Panel
+            this.panel = new DefaultPanel();
+            this.toolStripContainer1.ContentPanel.Controls.Add((Control)panel);
+            #endregion
         }
     }
 }
