@@ -11,6 +11,8 @@ namespace mindmap
     public interface ITool
     {
         String Name { get; set; }
+        Cursor cursor { get; }
+        IPanel TargetCanvas { get; set; }
         
         void ToolMouseDown(object sender, MouseEventArgs e);
         void ToolMouseUp(object sender, MouseEventArgs e);

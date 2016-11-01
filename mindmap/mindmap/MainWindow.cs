@@ -18,6 +18,9 @@ namespace mindmap
         private IToolbar toolbar;
         private IPanel panel;
         private IMenubar menubar;
+        private IToolbox toolbox;
+        private IEditor editor;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -76,6 +79,26 @@ namespace mindmap
             this.menubar.AddMenuItem(exampleMenuItem3);
 
             #endregion
+
+            #region Toolbox
+
+            // Initializing toolbox
+            Debug.WriteLine("Loading toolbox...");
+            this.toolbox = new DefaultToolbox();
+            this.toolStripContainer1.LeftToolStripPanel.Controls.Add((Control)this.toolbox);
+            //this.editor.Toolbox = toolbox;
+
+            #endregion
+        }
+        private void Toolbox_ToolSelected(ITool tool)
+        {
+            if (this.editor != null)
+            {
+                Debug.WriteLine("Tool " + tool.Name + " is selected");
+                IPanel canvas = this.editor.GetSelectedCanvas();
+                canvas.SetActiveTools(tool);
+                tool.TargetCanvas = canvas;
+            }
         }
     }
 }
