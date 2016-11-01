@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,7 @@ namespace mindmap
 
         public void Select()
         {
-            //Debug.WriteLine("Object id=" + ID.ToString() + " is selected.");
+            Debug.WriteLine("Object id=" + ID.ToString() + " is selected.");
             this.state.Select(this);
         }
 
