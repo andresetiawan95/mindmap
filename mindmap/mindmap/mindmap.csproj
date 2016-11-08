@@ -55,18 +55,23 @@
     </Compile>
     <Compile Include="DrawingObject.cs" />
     <Compile Include="DrawingState.cs" />
+    <Compile Include="DefaultToolbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ICommand.cs" />
     <Compile Include="IconSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IconSet.resx</DependentUpon>
     </Compile>
+    <Compile Include="IEditor.cs" />
     <Compile Include="IMenubar.cs" />
     <Compile Include="IMenuItem.cs" />
     <Compile Include="IPanel.cs" />
     <Compile Include="ITool.cs" />
     <Compile Include="IToolbar.cs" />
     <Compile Include="IToolbarItem.cs" />
+    <Compile Include="IToolbox.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

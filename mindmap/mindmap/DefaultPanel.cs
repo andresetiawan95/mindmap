@@ -23,7 +23,7 @@ namespace mindmap
             this.Invalidate();
             this.Update();
         }
-        public void SetColorBackground (Color color)
+        public void SetColorBackground(Color color)
         {
             this.BackColor = color;
         }
