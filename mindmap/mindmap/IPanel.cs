@@ -9,7 +9,7 @@ namespace mindmap
 {
     public interface IPanel
     {
-        String name { get; set; }
+        String Name { get; set; }
         ITool GetActiveTool();
         void SetBackgroundColor(Color color);
         void Repaint();

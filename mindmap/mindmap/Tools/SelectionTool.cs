@@ -9,12 +9,12 @@ namespace mindmap.Tools
 {
     public class SelectionTool : ToolStripButton, ITool
     {
-        private ICanvas canvas;
+        private IPanel canvas;
         private DrawingObject selectedObject;
         private int xInitial;
         private int yInitial;
 
-        public Cursor Cursor
+        public Cursor cursor
         {
             get
             {
@@ -22,7 +22,7 @@ namespace mindmap.Tools
             }
         }
 
-        public ICanvas TargetCanvas
+        public IPanel TargetCanvas
         {
             get
             {

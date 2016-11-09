@@ -13,7 +13,7 @@ namespace mindmap.Tools
         private IPanel canvas;
         private LineSegment lineSegment;
 
-        public Cursor Cursor
+        public Cursor cursor
         {
             get
             {

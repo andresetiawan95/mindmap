@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using mindmap.ToolbarItems;
 using mindmap.MenuItems;
+using mindmap.Tools;
 
 namespace mindmap
 {

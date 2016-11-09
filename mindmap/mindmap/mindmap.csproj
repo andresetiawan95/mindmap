@@ -91,6 +91,15 @@
     <Compile Include="ToolbarItems\ToolbarItem.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Tools\LineTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\RectangleTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\SelectionTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="IconSet.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>IconSet.Designer.cs</LastGenOutput>
@@ -141,6 +150,7 @@
   <ItemGroup>
     <Content Include="bin\Debug\mindmap.vshost.exe" />
     <Content Include="obj\Debug\mindmap.csproj.FileListAbsolute.txt" />
+    <Content Include="Resources\cursor.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />

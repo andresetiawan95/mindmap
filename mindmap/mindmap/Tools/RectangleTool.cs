@@ -13,7 +13,7 @@ namespace mindmap.Tools
         private IPanel canvas;
         private Rectangle rectangle;
 
-        public Cursor Cursor
+        public Cursor cursor
         {
             get
             {
