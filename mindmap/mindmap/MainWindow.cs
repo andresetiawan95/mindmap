@@ -50,9 +50,18 @@ namespace mindmap
 
             #endregion
 
-            #region Panel
-            this.panel = new DefaultPanel();
-            this.toolStripContainer1.ContentPanel.Controls.Add((Control)panel);
+            #region Editor and Panel
+            Debug.WriteLine("Loading panel...");
+            this.editor = new DefaultEditor();
+            this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.editor);
+
+            IPanel canvas1 = new DefaultPanel();
+            canvas1.Name = "Untitled-1";
+            this.editor.AddCanvas(canvas1);
+
+            IPanel canvas2 = new DefaultPanel();
+            canvas2.Name = "Untitled-2";
+            this.editor.AddCanvas(canvas2);
             #endregion
 
             #region Menubar

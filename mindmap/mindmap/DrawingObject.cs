@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mindmap.States;
 
 namespace mindmap
 {
@@ -26,7 +27,7 @@ namespace mindmap
         public DrawingObject()
         {
             ID = Guid.NewGuid();
-            //this.ChangeState(PreviewState.GetInstance()); //default initial state
+            this.ChangeState(PreviewState.GetInstance()); //default initial state
         }
 
         public abstract bool Intersect(int xTest, int yTest);
@@ -54,7 +55,7 @@ namespace mindmap
 
         public void Deselect()
         {
-            //Debug.WriteLine("Object id=" + ID.ToString() + " is deselected.");
+            Debug.WriteLine("Object id=" + ID.ToString() + " is deselected.");
             this.state.Deselect(this);
         }
 
