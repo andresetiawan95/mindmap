@@ -89,6 +89,18 @@ namespace mindmap
             //this.editor.Toolbox = toolbox;
 
             #endregion
+
+            #region Tools
+
+            // Initializing tools
+            Debug.WriteLine("Loading tools...");
+            this.toolbox.AddTool(new SelectionTool());
+            this.toolbox.AddSeparator();
+            this.toolbox.AddTool(new LineTool());
+            this.toolbox.AddTool(new RectangleTool());
+            this.toolbox.ToolSelected += Toolbox_ToolSelected;
+
+            #endregion
         }
         private void Toolbox_ToolSelected(ITool tool)
         {

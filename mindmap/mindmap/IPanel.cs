@@ -9,8 +9,17 @@ namespace mindmap
 {
     public interface IPanel
     {
-        void SetColorBackground(Color color);
+        String name { get; set; }
+        ITool GetActiveTool();
+        void SetBackgroundColor(Color color);
         void Repaint();
         void SetActiveTools(ITool itool);
+
+        void AddDrawingObject(DrawingObject drawingObject);
+        void RemoveDrawingObject(DrawingObject drawingObject);
+
+        DrawingObject GetObjectAt(int x, int y);
+        DrawingObject SelectObjectAt(int x, int y);
+        void DeselectAllObjects();
     }
 }
