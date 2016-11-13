@@ -15,7 +15,7 @@ namespace mindmap
         //Constructor untuk menginisiasi Panel
         public DefaultPanel()
         {
-            this.BackColor = Color.AntiqueWhite;
+            this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
         }
         public void Repaint()
