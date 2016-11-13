@@ -20,6 +20,7 @@ namespace mindmap.Shapes
 
         public Rectangle()
         {
+            Debug.WriteLine("Inisialisasi Class Rectangle");
             this.pen = new Pen(Color.Black);
             pen.Width = 1.5f;
         }

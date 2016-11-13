@@ -37,7 +37,7 @@ namespace mindmap
         private void DefaultEditor_Selected(object sender, TabControlEventArgs e)
         {
             this.selectedCanvas = (IPanel)e.TabPage.Controls[0];
-            this.toolbox.ActiveTool = this.selectedCanvas.GetActiveTool();
+            //this.toolbox.ActiveTool = this.selectedCanvas.GetActiveTool();
         }
 
         public void AddCanvas(IPanel canvas)

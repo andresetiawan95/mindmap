@@ -26,6 +26,7 @@ namespace mindmap
 
         public DrawingObject()
         {
+            Debug.WriteLine("Masuk ke class DrawingObject, memberikan GUID pada object");
             ID = Guid.NewGuid();
             this.ChangeState(PreviewState.GetInstance()); //default initial state
         }
@@ -44,6 +45,7 @@ namespace mindmap
 
         public virtual void Draw()
         {
+            Debug.WriteLine("Drawing Object digambar disini");
             this.state.Draw(this);
         }
 

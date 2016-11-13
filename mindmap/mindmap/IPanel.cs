@@ -13,7 +13,7 @@ namespace mindmap
         ITool GetActiveTool();
         void SetBackgroundColor(Color color);
         void Repaint();
-        void SetActiveTools(ITool itool);
+        void SetActiveTool(ITool itool);
 
         void AddDrawingObject(DrawingObject drawingObject);
         void RemoveDrawingObject(DrawingObject drawingObject);

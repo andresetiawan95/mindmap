@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace mindmap.States
 
         public static DrawingState GetInstance()
         {
+            Debug.WriteLine("masuk pada inisialiasi StaticState pada class StaticState");
             if (instance == null)
             {
                 instance = new StaticState();

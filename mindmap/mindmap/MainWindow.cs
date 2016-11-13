@@ -118,7 +118,7 @@ namespace mindmap
             {
                 Debug.WriteLine("Tool " + tool.Name + " is selected");
                 IPanel canvas = this.editor.GetSelectedCanvas();
-                canvas.SetActiveTools(tool);
+                canvas.SetActiveTool(tool);
                 tool.TargetCanvas = canvas;
             }
         }

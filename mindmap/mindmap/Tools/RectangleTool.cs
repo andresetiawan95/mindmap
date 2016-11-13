@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using mindmap.Shapes;
+using System.Diagnostics;
 
 namespace mindmap.Tools
 {
     public class RectangleTool : ToolStripButton, ITool
     {
+        //merupakan class untuk implementasi Rectangle Tool (menggambar, menghapus, select object)
         private IPanel canvas;
         private Rectangle rectangle;
 
@@ -44,15 +46,18 @@ namespace mindmap.Tools
 
         public void ToolMouseDown(object sender, MouseEventArgs e)
         {
+            Debug.WriteLine("Rectangle mouse down (untuk menggambar object baru) --> activated");
             if (e.Button == MouseButtons.Left)
             {
                 this.rectangle = new Rectangle(e.X, e.Y);
                 this.canvas.AddDrawingObject(this.rectangle);
+                Debug.WriteLine("Rectangle dimasukkan kedalam AddDrawingObject pada kanvas");
             }
         }
 
         public void ToolMouseMove(object sender, MouseEventArgs e)
         {
+            Debug.WriteLine("Rectangle mouse move --> activated");
             if (e.Button == MouseButtons.Left)
             {
                 if (this.rectangle != null)
@@ -75,10 +80,12 @@ namespace mindmap.Tools
             {
                 if (e.Button == MouseButtons.Left)
                 {
+                    Debug.WriteLine("Rectangle mouse up left  --> activated");
                     this.rectangle.Select();
                 }
                 else if (e.Button == MouseButtons.Right)
                 {
+                    Debug.WriteLine("Rectangle mouse up right --> activated");
                     canvas.RemoveDrawingObject(this.rectangle);
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,11 @@ namespace mindmap
 {
     public class DefaultPanel: Control, IPanel
     {
-        ITool tools;
+        private ITool tools;
         private List<DrawingObject> drawingObjects;
 
         //Constructor untuk menginisiasi Panel
         public DefaultPanel()
-        {
-            Init();
-        }
-        public void Init()
         {
             this.drawingObjects = new List<DrawingObject>();
             this.DoubleBuffered = true;
@@ -31,6 +28,7 @@ namespace mindmap
             this.MouseUp += DefaultCanvas_MouseUp;
             this.MouseMove += DefaultCanvas_MouseMove;
         }
+        
         public ITool GetActiveTool()
         {
             return this.tools;
@@ -44,7 +42,7 @@ namespace mindmap
         {
             this.BackColor = color;
         }
-        public void SetActiveTools (ITool tool)
+        public void SetActiveTool (ITool tool)
         {
             this.tools = tool;
         }
@@ -79,6 +77,7 @@ namespace mindmap
         {
             foreach (DrawingObject obj in drawingObjects)
             {
+                Debug.WriteLine("Masuk ke Method DefaultCanvas_Paint");
                 obj.Graphics = e.Graphics;
                 obj.Draw();
             }
