@@ -22,5 +22,6 @@ namespace mindmap
         DrawingObject SelectObjectAt(int x, int y);
         void DeselectAllObjects();
         void AddButtonObject(ButtonObject buttonObject);
+        void GetButton(Guid id);
     }
 }

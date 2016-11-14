@@ -21,9 +21,13 @@ namespace mindmap
             this.X = x;
             this.Y = y;
         }
+        public Button getButton()
+        {
+            return button;
+        }
         public Button InitiateButton()
         {
-            Button button = new Button();
+            button = new Button();
             button.Text = "Add";
             button.Location = new Point(X, Y);
             return button;

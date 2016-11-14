@@ -54,9 +54,9 @@ namespace mindmap.Tools
                 canvas.DeselectAllObjects();
                 Debug.WriteLine("Memanggil method SelectObjectAt pada Panel(DefaultPanel) melalui SelectionTool.cs..");
                 selectedObject = canvas.SelectObjectAt(e.X, e.Y);
+                if (selectedObject!=null)canvas.GetButton(selectedObject.ID);
                 Debug.WriteLine("Sudah selesai menjalankan method SelectObjectAt pada Panel(DefaultPanel) melalui SelectionTool.cs..");
             }
-
         }
 
         public void ToolMouseMove(object sender, MouseEventArgs e)

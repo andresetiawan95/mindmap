@@ -15,6 +15,7 @@ namespace mindmap
         private List<DrawingObject> drawingObjects;
         private List<ButtonObject> buttonObjects;
         private Button button;
+        private ButtonObject btnObject;
         //Constructor untuk menginisiasi Panel
         public DefaultPanel()
         {
@@ -27,12 +28,11 @@ namespace mindmap
             this.MouseDown += DefaultCanvas_MouseDown;
             this.MouseUp += DefaultCanvas_MouseUp;
             this.MouseMove += DefaultCanvas_MouseMove;
-            
         }
 
         private void Button_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Tombol dengan ID "+btnObject.btnID+" telah diklik.");
         }
 
         public ITool GetActiveTool()
@@ -140,11 +140,17 @@ namespace mindmap
                 drawObj.Deselect();
             }
         }
-        public void InitiateButton(int x, int y)
+        public void GetButton(Guid id)
         {
-            button = new Button();
-            button.Location = new Point(x, y);
-            this.Controls.Add(button);
+            foreach (ButtonObject btnObj in buttonObjects)
+            {
+                if (btnObj.btnID == id)
+                {
+                    btnObject = btnObj;
+                    this.button = btnObj.getButton();
+                    this.button.Click += Button_Click;
+                }
+            }
         }
     }
 }
