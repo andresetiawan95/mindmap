@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace mindmap.Shapes
 {
@@ -15,14 +16,13 @@ namespace mindmap.Shapes
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-
         private Pen pen;
 
         public Rectangle()
         {
             Debug.WriteLine("Inisialisasi Class Rectangle");
             this.pen = new Pen(Color.Black);
-            pen.Width = 1.5f;
+            pen.Width = 5.0f;
         }
 
         public Rectangle(int x, int y)
@@ -58,9 +58,11 @@ namespace mindmap.Shapes
 
         public override void RenderOnEditingView()
         {
+            Debug.WriteLine("gambar ulang rectangle nya dengan warna biru...");
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            //Graphics.DrawImage(IconSet.add_mindmap_tree, X ,Y);
         }
 
         public override void RenderOnPreview()

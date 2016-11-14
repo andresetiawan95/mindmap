@@ -21,7 +21,6 @@ namespace mindmap
         private IMenubar menubar;
         private IToolbox toolbox;
         private IEditor editor;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -109,7 +108,6 @@ namespace mindmap
             this.toolbox.AddTool(new LineTool());
             this.toolbox.AddTool(new RectangleTool());
             this.toolbox.ToolSelected += Toolbox_ToolSelected;
-
             #endregion
         }
         private void Toolbox_ToolSelected(ITool tool)

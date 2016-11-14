@@ -13,21 +13,28 @@ namespace mindmap
     {
         private ITool tools;
         private List<DrawingObject> drawingObjects;
-
+        private List<ButtonObject> buttonObjects;
+        private Button button;
         //Constructor untuk menginisiasi Panel
         public DefaultPanel()
         {
             this.drawingObjects = new List<DrawingObject>();
+            this.buttonObjects = new List<ButtonObject>();
             this.DoubleBuffered = true;
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
-
             this.Paint += DefaultCanvas_Paint;
             this.MouseDown += DefaultCanvas_MouseDown;
             this.MouseUp += DefaultCanvas_MouseUp;
             this.MouseMove += DefaultCanvas_MouseMove;
+            
         }
-        
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         public ITool GetActiveTool()
         {
             return this.tools;
@@ -49,6 +56,7 @@ namespace mindmap
         {
             if (this.tools != null)
             {
+                Debug.WriteLine("Tool Mouse Move dijalankan dari class DefaultPanel.cs...");
                 this.tools.ToolMouseMove(sender, e);
                 this.Repaint();
             }
@@ -58,6 +66,7 @@ namespace mindmap
         {
             if (this.tools != null)
             {
+                Debug.WriteLine("Tool Mouse Up dijalankan dari class DefaultPanel.cs...");
                 this.tools.ToolMouseUp(sender, e);
                 this.Repaint();
             }
@@ -67,7 +76,9 @@ namespace mindmap
         {
             if (this.tools != null)
             {
+                Debug.WriteLine("Tool Mouse Down dijalankan dari class DefaultPanel.cs...");
                 this.tools.ToolMouseDown(sender, e);
+                Debug.WriteLine("Perintah repaint akan dijalankan (method DefaultCanvas_MouseDown");
                 this.Repaint();
             }
         }
@@ -85,7 +96,13 @@ namespace mindmap
         {
             this.drawingObjects.Add(drawingObject);
         }
-
+        public void AddButtonObject(ButtonObject buttonObject)
+        {
+            Button btn = buttonObject.InitiateButton();
+            this.buttonObjects.Add(buttonObject);
+            this.Controls.Add(btn);
+            this.button = btn;
+        }
         public void RemoveDrawingObject(DrawingObject drawingObject)
         {
             this.drawingObjects.Remove(drawingObject);
@@ -122,6 +139,12 @@ namespace mindmap
             {
                 drawObj.Deselect();
             }
+        }
+        public void InitiateButton(int x, int y)
+        {
+            button = new Button();
+            button.Location = new Point(x, y);
+            this.Controls.Add(button);
         }
     }
 }

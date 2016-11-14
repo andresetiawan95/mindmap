@@ -14,6 +14,7 @@ namespace mindmap.Tools
         //merupakan class untuk implementasi Rectangle Tool (menggambar, menghapus, select object)
         private IPanel canvas;
         private Rectangle rectangle;
+        private ButtonObject buttonObject;
 
         public Cursor cursor
         {
@@ -46,12 +47,15 @@ namespace mindmap.Tools
 
         public void ToolMouseDown(object sender, MouseEventArgs e)
         {
-            Debug.WriteLine("Rectangle mouse down (untuk menggambar object baru) --> activated");
+            Debug.WriteLine("Rectangle mouse down (untuk menggambar object baru) --> activated (Via class RectangleTool.cs");
             if (e.Button == MouseButtons.Left)
             {
                 this.rectangle = new Rectangle(e.X, e.Y);
+                Debug.WriteLine("Rectangle sudah digambar... (via class RectangleTool.cs)");
                 this.canvas.AddDrawingObject(this.rectangle);
-                Debug.WriteLine("Rectangle dimasukkan kedalam AddDrawingObject pada kanvas");
+                Debug.WriteLine("Rectangle dimasukkan kedalam AddDrawingObject pada kanvas (via class RectangleTool.cs)");
+                this.buttonObject = new ButtonObject(e.X, e.Y, this.rectangle.ID);
+                this.canvas.AddButtonObject(this.buttonObject);
             }
         }
 
