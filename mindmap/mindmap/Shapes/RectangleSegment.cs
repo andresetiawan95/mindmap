@@ -10,29 +10,30 @@ using System.Windows.Forms;
 
 namespace mindmap.Shapes
 {
-    public class Rectangle : DrawingObject
+    public class RectangleSegment : DrawingObject
     {
+        public Guid nodeID;
         public int X { get; set; }
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         private Pen pen;
 
-        public Rectangle()
+        public RectangleSegment()
         {
             Debug.WriteLine("Inisialisasi Class Rectangle");
             this.pen = new Pen(Color.Black);
-            pen.Width = 5.0f;
+            pen.Width = 1.5f;
         }
 
-        public Rectangle(int x, int y)
+        public RectangleSegment(int x, int y)
             : this()
         {
             this.X = x;
             this.Y = y;
         }
 
-        public Rectangle(int x, int y, int width, int height)
+        public RectangleSegment(int x, int y, int width, int height)
             : this(x, y)
         {
             this.Width = width;
@@ -58,7 +59,7 @@ namespace mindmap.Shapes
 
         public override void RenderOnEditingView()
         {
-            Debug.WriteLine("gambar ulang rectangle nya dengan warna biru...");
+            //Debug.WriteLine("gambar ulang rectangle nya dengan warna biru...");
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
@@ -76,6 +77,14 @@ namespace mindmap.Shapes
         {
             this.X += xAmount;
             this.Y += yAmount;
+        }
+        public int getX()
+        {
+            return this.X;
+        }
+        public int getY()
+        {
+            return this.Y;
         }
     }
 }
