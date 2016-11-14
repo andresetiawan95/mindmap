@@ -19,7 +19,6 @@ namespace mindmap
         {
             this.drawingObjects = new List<DrawingObject>();
             this.DoubleBuffered = true;
-
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
 
