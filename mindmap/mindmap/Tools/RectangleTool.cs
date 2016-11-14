@@ -13,7 +13,7 @@ namespace mindmap.Tools
     {
         //merupakan class untuk implementasi Rectangle Tool (menggambar, menghapus, select object)
         private IPanel canvas;
-        private Rectangle rectangle;
+        private RectangleSegment rectangle;
         private ButtonObject buttonObject;
 
         public Cursor cursor
@@ -50,18 +50,20 @@ namespace mindmap.Tools
             Debug.WriteLine("Rectangle mouse down (untuk menggambar object baru) --> activated (Via class RectangleTool.cs");
             if (e.Button == MouseButtons.Left)
             {
-                this.rectangle = new Rectangle(e.X, e.Y);
+                this.rectangle = new RectangleSegment(e.X, e.Y);
                 Debug.WriteLine("Rectangle sudah digambar... (via class RectangleTool.cs)");
                 this.canvas.AddDrawingObject(this.rectangle);
+                this.canvas.AddRectangleObject(this.rectangle);
                 Debug.WriteLine("Rectangle dimasukkan kedalam AddDrawingObject pada kanvas (via class RectangleTool.cs)");
                 this.buttonObject = new ButtonObject(e.X, e.Y, this.rectangle.ID);
                 this.canvas.AddButtonObject(this.buttonObject);
+                
             }
         }
 
         public void ToolMouseMove(object sender, MouseEventArgs e)
         {
-            Debug.WriteLine("Rectangle mouse move --> activated");
+           // Debug.WriteLine("Rectangle mouse move --> activated");
             if (e.Button == MouseButtons.Left)
             {
                 if (this.rectangle != null)
@@ -84,12 +86,12 @@ namespace mindmap.Tools
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    Debug.WriteLine("Rectangle mouse up left selected --> activated");
+                    //Debug.WriteLine("Rectangle mouse up left selected --> activated");
                     this.rectangle.Select();
                 }
                 else if (e.Button == MouseButtons.Right)
                 {
-                    Debug.WriteLine("Rectangle mouse up right --> activated");
+                    //Debug.WriteLine("Rectangle mouse up right --> activated");
                     canvas.RemoveDrawingObject(this.rectangle);
                 }
             }

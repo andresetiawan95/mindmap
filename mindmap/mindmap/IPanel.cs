@@ -4,6 +4,7 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
+using mindmap.Shapes;
 
 namespace mindmap
 {
@@ -17,7 +18,7 @@ namespace mindmap
 
         void AddDrawingObject(DrawingObject drawingObject);
         void RemoveDrawingObject(DrawingObject drawingObject);
-
+        void AddRectangleObject(RectangleSegment rect);
         DrawingObject GetObjectAt(int x, int y);
         DrawingObject SelectObjectAt(int x, int y);
         void DeselectAllObjects();
