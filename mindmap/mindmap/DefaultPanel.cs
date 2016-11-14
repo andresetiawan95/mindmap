@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using mindmap.Shapes;
 
 namespace mindmap
 {
@@ -14,13 +15,16 @@ namespace mindmap
         private ITool tools;
         private List<DrawingObject> drawingObjects;
         private List<ButtonObject> buttonObjects;
+        private List<RectangleSegment> rectangleObjects;
         private Button button;
         private ButtonObject btnObject;
+        private MindmapTree mindmapTree;
         //Constructor untuk menginisiasi Panel
         public DefaultPanel()
         {
             this.drawingObjects = new List<DrawingObject>();
             this.buttonObjects = new List<ButtonObject>();
+            this.rectangleObjects = new List<RectangleSegment>();
             this.DoubleBuffered = true;
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
@@ -32,9 +36,22 @@ namespace mindmap
 
         private void Button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tombol dengan ID "+btnObject.btnID+" telah diklik.");
-        }
+            RectangleSegment node = findRectangleByGuid(btnObject.btnID);
+            if (node!=null)Debug.WriteLine("rectangle ID = " + node.ID);
+            Debug.WriteLine("RECTANGLE DITEMUKAN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            if (mindmapTree == null) mindmapTree = new MindmapTree(node, this.tools.TargetCanvas);
+            mindmapTree.AddChild();
+            //MessageBox.Show("Tombol dengan ID "+btnObject.btnID+" telah diklik.");
 
+        }
+        private RectangleSegment findRectangleByGuid(Guid id)
+        {
+            foreach (RectangleSegment drwObj in drawingObjects)
+            {
+                if (drwObj.ID == id) return drwObj;
+            }
+            return null;
+        }
         public ITool GetActiveTool()
         {
             return this.tools;
@@ -56,7 +73,7 @@ namespace mindmap
         {
             if (this.tools != null)
             {
-                Debug.WriteLine("Tool Mouse Move dijalankan dari class DefaultPanel.cs...");
+                //Debug.WriteLine("Tool Mouse Move dijalankan dari class DefaultPanel.cs...");
                 this.tools.ToolMouseMove(sender, e);
                 this.Repaint();
             }
@@ -66,7 +83,7 @@ namespace mindmap
         {
             if (this.tools != null)
             {
-                Debug.WriteLine("Tool Mouse Up dijalankan dari class DefaultPanel.cs...");
+               // Debug.WriteLine("Tool Mouse Up dijalankan dari class DefaultPanel.cs...");
                 this.tools.ToolMouseUp(sender, e);
                 this.Repaint();
             }
@@ -76,9 +93,9 @@ namespace mindmap
         {
             if (this.tools != null)
             {
-                Debug.WriteLine("Tool Mouse Down dijalankan dari class DefaultPanel.cs...");
+                //Debug.WriteLine("Tool Mouse Down dijalankan dari class DefaultPanel.cs...");
                 this.tools.ToolMouseDown(sender, e);
-                Debug.WriteLine("Perintah repaint akan dijalankan (method DefaultCanvas_MouseDown");
+               // Debug.WriteLine("Perintah repaint akan dijalankan (method DefaultCanvas_MouseDown");
                 this.Repaint();
             }
         }
@@ -87,7 +104,7 @@ namespace mindmap
         {
             foreach (DrawingObject obj in drawingObjects)
             {
-                Debug.WriteLine("Masuk ke Method DefaultCanvas_Paint");
+               // Debug.WriteLine("Masuk ke Method DefaultCanvas_Paint");
                 obj.Graphics = e.Graphics;
                 obj.Draw();
             }
@@ -95,6 +112,10 @@ namespace mindmap
         public void AddDrawingObject(DrawingObject drawingObject)
         {
             this.drawingObjects.Add(drawingObject);
+        }
+        public void AddRectangleObject(RectangleSegment rect)
+        {
+            this.rectangleObjects.Add(rect);
         }
         public void AddButtonObject(ButtonObject buttonObject)
         {

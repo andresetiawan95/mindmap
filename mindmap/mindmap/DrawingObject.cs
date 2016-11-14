@@ -45,7 +45,7 @@ namespace mindmap
 
         public virtual void Draw()
         {
-            Debug.WriteLine("Drawing Object digambar disini");
+            //Debug.WriteLine("Drawing Object digambar disini");
             this.state.Draw(this);
         }
 
