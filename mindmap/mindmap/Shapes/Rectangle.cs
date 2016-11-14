@@ -43,7 +43,7 @@ namespace mindmap.Shapes
         {
             if ((xTest >= X && xTest <= X + Width) && (yTest >= Y && yTest <= Y + Height))
             {
-                Debug.WriteLine("Object " + ID + " is selected.");
+                Debug.WriteLine("Object " + ID + " is selected (From Rectangle.cs class).");
                 return true;
             }
             return false;

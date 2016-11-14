@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,9 @@ namespace mindmap.Tools
             if (e.Button == MouseButtons.Left && canvas != null)
             {
                 canvas.DeselectAllObjects();
+                Debug.WriteLine("Memanggil method SelectObjectAt pada Panel(DefaultPanel) melalui SelectionTool.cs..");
                 selectedObject = canvas.SelectObjectAt(e.X, e.Y);
+                Debug.WriteLine("Sudah selesai menjalankan method SelectObjectAt pada Panel(DefaultPanel) melalui SelectionTool.cs..");
             }
 
         }

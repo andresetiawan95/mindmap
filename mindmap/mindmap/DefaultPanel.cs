@@ -93,6 +93,7 @@ namespace mindmap
 
         public DrawingObject GetObjectAt(int x, int y)
         {
+            Debug.WriteLine("Masuk ke method GetObjectAt...");
             foreach (DrawingObject obj in drawingObjects)
             {
                 if (obj.Intersect(x, y))
@@ -105,6 +106,7 @@ namespace mindmap
 
         public DrawingObject SelectObjectAt(int x, int y)
         {
+            Debug.WriteLine("Masuk ke method SelectObjectAt...");
             DrawingObject obj = GetObjectAt(x, y);
             if (obj != null)
             {

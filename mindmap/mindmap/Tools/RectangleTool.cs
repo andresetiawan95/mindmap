@@ -80,7 +80,7 @@ namespace mindmap.Tools
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    Debug.WriteLine("Rectangle mouse up left  --> activated");
+                    Debug.WriteLine("Rectangle mouse up left selected --> activated");
                     this.rectangle.Select();
                 }
                 else if (e.Button == MouseButtons.Right)
