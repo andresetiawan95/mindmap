@@ -12,7 +12,6 @@ namespace mindmap
     public abstract class DrawingObject
     {
         public Guid ID { get; set; }
-        public Graphics Graphics { get; set; }
 
         public DrawingState State
         {
@@ -23,6 +22,7 @@ namespace mindmap
         }
 
         private DrawingState state;
+        private Graphics graphics;
 
         public DrawingObject()
         {
@@ -30,6 +30,9 @@ namespace mindmap
             ID = Guid.NewGuid();
             this.ChangeState(PreviewState.GetInstance()); //default initial state
         }
+
+        public abstract bool Add(DrawingObject obj);
+        public abstract bool Remove(DrawingObject obj);
 
         public abstract bool Intersect(int xTest, int yTest);
         public abstract void Translate(int x, int y, int xAmount, int yAmount);
@@ -59,6 +62,15 @@ namespace mindmap
         {
             Debug.WriteLine("Object id=" + ID.ToString() + " is deselected.");
             this.state.Deselect(this);
+        }
+        public virtual void SetGraphics(Graphics graphics)
+        {
+            this.graphics = graphics;
+        }
+
+        public virtual Graphics GetGraphics()
+        {
+            return this.graphics;
         }
 
     }

@@ -123,7 +123,7 @@ namespace mindmap
             foreach (DrawingObject obj in drawingObjects)
             {
                // Debug.WriteLine("Masuk ke Method DefaultCanvas_Paint");
-                obj.Graphics = e.Graphics;
+                obj.SetGraphics(e.Graphics);
                 obj.Draw();
             }
         }

@@ -42,10 +42,10 @@ namespace mindmap.Shapes
             pen.Width = 1.5f;
             pen.DashStyle = DashStyle.Solid;
 
-            if (this.Graphics != null)
+            if (this.GetGraphics() != null)
             {
-                this.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                this.Graphics.DrawLine(pen, this.Startpoint, this.Endpoint);
+                this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
+                this.GetGraphics().DrawLine(pen, this.Startpoint, this.Endpoint);
             }
         }
 
@@ -55,10 +55,10 @@ namespace mindmap.Shapes
             pen.Width = 1.5f;
             pen.DashStyle = DashStyle.Solid;
 
-            if (this.Graphics != null)
+            if (this.GetGraphics() != null)
             {
-                this.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                this.Graphics.DrawLine(pen, this.Startpoint, this.Endpoint);
+                this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
+                this.GetGraphics().DrawLine(pen, this.Startpoint, this.Endpoint);
             }
         }
 
@@ -68,10 +68,10 @@ namespace mindmap.Shapes
             pen.Width = 1.5f;
             pen.DashStyle = DashStyle.DashDotDot;
 
-            if (this.Graphics != null)
+            if (this.GetGraphics() != null)
             {
-                this.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                this.Graphics.DrawLine(pen, this.Startpoint, this.Endpoint);
+                this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
+                this.GetGraphics().DrawLine(pen, this.Startpoint, this.Endpoint);
             }
         }
 
@@ -99,6 +99,16 @@ namespace mindmap.Shapes
         {
             this.Startpoint = new Point(this.Startpoint.X + xAmount, this.Startpoint.Y + yAmount);
             this.Endpoint = new Point(this.Endpoint.X + xAmount, this.Endpoint.Y + yAmount);
+        }
+
+        public override bool Add(DrawingObject obj)
+        {
+            return false;
+        }
+
+        public override bool Remove(DrawingObject obj)
+        {
+            return false;
         }
     }
 }

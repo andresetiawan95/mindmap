@@ -18,12 +18,14 @@ namespace mindmap.Shapes
         public int Width { get; set; }
         public int Height { get; set; }
         private Pen pen;
+        private List<DrawingObject> drawingObjects;
 
         public RectangleSegment()
         {
             Debug.WriteLine("Inisialisasi Class Rectangle");
             this.pen = new Pen(Color.Black);
             pen.Width = 1.5f;
+            drawingObjects = new List<DrawingObject>();
         }
 
         public RectangleSegment(int x, int y)
@@ -54,7 +56,13 @@ namespace mindmap.Shapes
         {
             this.pen.Color = Color.Black;
             this.pen.DashStyle = DashStyle.Solid;
-            Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            GetGraphics().DrawRectangle(this.pen, X, Y, Width, Height);
+
+            foreach (DrawingObject obj in drawingObjects)
+            {
+                obj.SetGraphics(GetGraphics());
+                obj.RenderOnStaticView();
+            }
         }
 
         public override void RenderOnEditingView()
@@ -62,21 +70,38 @@ namespace mindmap.Shapes
             //Debug.WriteLine("gambar ulang rectangle nya dengan warna biru...");
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
-            Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            GetGraphics().DrawRectangle(this.pen, X, Y, Width, Height);
             //Graphics.DrawImage(IconSet.add_mindmap_tree, X ,Y);
+
+            foreach (DrawingObject obj in drawingObjects)
+            {
+                obj.SetGraphics(GetGraphics());
+                obj.RenderOnEditingView();
+            }
         }
 
         public override void RenderOnPreview()
         {
             this.pen.Color = Color.Red;
             this.pen.DashStyle = DashStyle.DashDot;
-            Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            GetGraphics().DrawRectangle(this.pen, X, Y, Width, Height);
+
+            foreach (DrawingObject obj in drawingObjects)
+            {
+                obj.SetGraphics(GetGraphics());
+                obj.RenderOnPreview();
+            }
         }
 
         public override void Translate(int x, int y, int xAmount, int yAmount)
         {
             this.X += xAmount;
             this.Y += yAmount;
+
+            foreach (DrawingObject obj in drawingObjects)
+            {
+                obj.Translate(x, y, xAmount, yAmount);
+            }
         }
         public int getX()
         {
@@ -85,6 +110,20 @@ namespace mindmap.Shapes
         public int getY()
         {
             return this.Y;
+        }
+
+        public override bool Add(DrawingObject obj)
+        {
+            drawingObjects.Add(obj);
+
+            return true;
+        }
+
+        public override bool Remove(DrawingObject obj)
+        {
+            drawingObjects.Remove(obj);
+
+            return true;
         }
     }
 }
