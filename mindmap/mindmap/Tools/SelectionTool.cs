@@ -12,6 +12,7 @@ namespace mindmap.Tools
     {
         private IPanel canvas;
         private DrawingObject selectedObject;
+        private ButtonObject selectedBtnObject;
         private int xInitial;
         private int yInitial;
 
@@ -54,7 +55,11 @@ namespace mindmap.Tools
                 canvas.DeselectAllObjects();
                 Debug.WriteLine("Memanggil method SelectObjectAt pada Panel(DefaultPanel) melalui SelectionTool.cs..");
                 selectedObject = canvas.SelectObjectAt(e.X, e.Y);
-                if (selectedObject!=null)canvas.GetButton(selectedObject.ID);
+                if (selectedObject != null)
+                {
+                    canvas.GetButton(selectedObject.ID);
+                    selectedBtnObject = canvas.SelectButtonObjectByID(selectedObject.ID);
+                }
                 Debug.WriteLine("Sudah selesai menjalankan method SelectObjectAt pada Panel(DefaultPanel) melalui SelectionTool.cs..");
             }
         }
@@ -71,6 +76,7 @@ namespace mindmap.Tools
                     yInitial = e.Y;
 
                     selectedObject.Translate(e.X, e.Y, xAmount, yAmount);
+                    selectedBtnObject.Translate(e.X, e.Y, xAmount, yAmount);
                 }
             }
         }

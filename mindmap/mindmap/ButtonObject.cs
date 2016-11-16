@@ -11,15 +11,19 @@ namespace mindmap
     public class ButtonObject
     {
         public Button button;
+        private IPanel canvas;
+        private Size size;
         public string namaButton;
         public int X { set; get; }
         public int Y { set; get; }
         public Guid btnID { get; set; }
-        public ButtonObject(int x, int y, Guid id)
+        public ButtonObject(int x, int y, Guid id, IPanel panel)
         {
+            this.size = new Size(20, 20);
             this.btnID = id;
             this.X = x;
             this.Y = y;
+            this.canvas = panel;
         }
         public Button getButton()
         {
@@ -28,13 +32,20 @@ namespace mindmap
         public Button InitiateButton()
         {
             button = new Button();
-            button.Text = "Add";
+            button.Text = "+";
             button.Location = new Point(X, Y);
+            button.Size = size;
             return button;
         }
         public void Selected()
         {
-            MessageBox.Show("Tombol dengan ID " + btnID + " telah ditekan.");
+            //implemented later
+        }
+        public void Translate(int x, int y, int xAmount, int yAmount)
+        {
+            this.X += xAmount;
+            this.Y += yAmount;
+            this.canvas.MoveButton(this.X, this.Y);
         }
     }
 }

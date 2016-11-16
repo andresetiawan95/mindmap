@@ -16,6 +16,7 @@ namespace mindmap
         private List<DrawingObject> drawingObjects;
         private List<ButtonObject> buttonObjects;
         private List<RectangleSegment> rectangleObjects;
+        private List<MindmapTree> treeList;
         private Button button;
         private ButtonObject btnObject;
         private MindmapTree mindmapTree;
@@ -25,6 +26,7 @@ namespace mindmap
             this.drawingObjects = new List<DrawingObject>();
             this.buttonObjects = new List<ButtonObject>();
             this.rectangleObjects = new List<RectangleSegment>();
+            this.treeList = new List<MindmapTree>();
             this.DoubleBuffered = true;
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
@@ -39,7 +41,12 @@ namespace mindmap
             RectangleSegment node = findRectangleByGuid(btnObject.btnID);
             if (node!=null)Debug.WriteLine("rectangle ID = " + node.ID);
             Debug.WriteLine("RECTANGLE DITEMUKAN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            if (mindmapTree == null) mindmapTree = new MindmapTree(node, this.tools.TargetCanvas);
+            mindmapTree = findNodeTree(node.ID);
+            if (mindmapTree == null)
+            {
+                mindmapTree = new MindmapTree(node, this.tools.TargetCanvas);
+                AddMindmapObject(mindmapTree);
+            }
             mindmapTree.AddChild();
             //MessageBox.Show("Tombol dengan ID "+btnObject.btnID+" telah diklik.");
 
@@ -49,6 +56,17 @@ namespace mindmap
             foreach (RectangleSegment drwObj in drawingObjects)
             {
                 if (drwObj.ID == id) return drwObj;
+            }
+            return null;
+        }
+        private MindmapTree findNodeTree(Guid id)
+        {
+            foreach (MindmapTree tree in treeList)
+            {
+                if (tree.nodeID == id)
+                {
+                    return tree;
+                }
             }
             return null;
         }
@@ -117,12 +135,18 @@ namespace mindmap
         {
             this.rectangleObjects.Add(rect);
         }
+        public void AddMindmapObject(MindmapTree mindmap)
+        {
+            this.treeList.Add(mindmap);
+        }
         public void AddButtonObject(ButtonObject buttonObject)
         {
             Button btn = buttonObject.InitiateButton();
             this.buttonObjects.Add(buttonObject);
             this.Controls.Add(btn);
             this.button = btn;
+
+            this.button.Click += Button_Click;
         }
         public void RemoveDrawingObject(DrawingObject drawingObject)
         {
@@ -169,9 +193,24 @@ namespace mindmap
                 {
                     btnObject = btnObj;
                     this.button = btnObj.getButton();
-                    this.button.Click += Button_Click;
                 }
             }
+        }
+        public ButtonObject SelectButtonObjectByID(Guid id)
+        {
+            foreach (ButtonObject btnObj in buttonObjects)
+            {
+                if (btnObj.btnID == id)
+                {
+                    return btnObj;
+                }
+            }
+            return null;
+        }
+        public void MoveButton(int x, int y)
+        {
+            this.button.Left = x;
+            this.button.Top = y;
         }
     }
 }

@@ -8,32 +8,44 @@ using System.Threading.Tasks;
 
 namespace mindmap
 {
-    class MindmapTree
+    public class MindmapTree
     {
         public List<RectangleSegment> rectChild;
+        public List<MindmapTree> child;
         public RectangleSegment node;
+        public ButtonObject childBtnObject;
         private IPanel canvas;
+        public Guid nodeID;
         public int X { set; get; }
         public int Y { set; get; }
         public MindmapTree(RectangleSegment rec, IPanel panel)
         {
+            this.child = new List<MindmapTree>();
             this.rectChild = new List<RectangleSegment>();
             this.node = rec;
             this.canvas = panel;
+            this.nodeID = rec.ID;
         }
         public void AddChild()
         {
-            this.X = (node.X - 20);
-            this.Y = (node.Y - 20);
+            this.X = node.X;
+            this.Y = (node.Y - 40);
              
             RectangleSegment newRect = new RectangleSegment(X, Y, 60, 30);
             rectChild.Add(newRect);
             this.canvas.AddDrawingObject(newRect);
+            this.canvas.AddRectangleObject(newRect);
+            MindmapTree mindmapTree = new MindmapTree(newRect, this.canvas);
+            child.Add(mindmapTree);
+            this.canvas.AddMindmapObject(mindmapTree);
+            childBtnObject = new ButtonObject(X, Y, newRect.ID, this.canvas);
+            this.canvas.AddButtonObject(childBtnObject);
             newRect.Select();
             Debug.WriteLine("Jumlah Node : " + NumofChild());
         }
         public void traverse()
         {
+
             //implemented later
         }
         public int NumofChild()

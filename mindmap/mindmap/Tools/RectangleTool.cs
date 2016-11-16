@@ -55,7 +55,7 @@ namespace mindmap.Tools
                 this.canvas.AddDrawingObject(this.rectangle);
                 this.canvas.AddRectangleObject(this.rectangle);
                 Debug.WriteLine("Rectangle dimasukkan kedalam AddDrawingObject pada kanvas (via class RectangleTool.cs)");
-                this.buttonObject = new ButtonObject(e.X, e.Y, this.rectangle.ID);
+                this.buttonObject = new ButtonObject(e.X, e.Y, this.rectangle.ID, this.canvas);
                 this.canvas.AddButtonObject(this.buttonObject);
                 
             }
