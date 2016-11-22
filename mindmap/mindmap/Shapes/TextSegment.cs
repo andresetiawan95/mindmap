@@ -5,6 +5,7 @@ namespace mindmap.Shapes
 {
     public class TextSegment : DrawingObject
     {
+        public Guid textId;
         public string Value { get; set; }
         public PointF Position { get; set; }
 
@@ -56,6 +57,12 @@ namespace mindmap.Shapes
         public override void Translate(int x, int y, int xAmount, int yAmount)
         {
             Position = new PointF(Position.X + xAmount, Position.Y + yAmount);
+        }
+
+        public override RectangleSegment getRect()
+        {
+            //do nothing
+            return null;
         }
     }
 }

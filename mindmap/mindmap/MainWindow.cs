@@ -33,7 +33,7 @@ namespace mindmap
 
             #region Toolbar
 
-            // Initializing toolbar
+            /*// Initializing toolbar
             Debug.WriteLine("Loading toolbar...");
             this.toolbar = new DefaultToolbar();
             this.toolStripContainer1.TopToolStripPanel.Controls.Add((Control)this.toolbar);
@@ -45,7 +45,7 @@ namespace mindmap
 
             this.toolbar.AddToolbarItem(toolItem1);
             this.toolbar.AddSeparator();
-            this.toolbar.AddToolbarItem(toolItem2);
+            this.toolbar.AddToolbarItem(toolItem2);*/
 
             #endregion
 
@@ -58,9 +58,9 @@ namespace mindmap
             canvas1.Name = "Untitled-1";
             this.editor.AddCanvas(canvas1);
 
-            IPanel canvas2 = new DefaultPanel();
+            /*IPanel canvas2 = new DefaultPanel();
             canvas2.Name = "Untitled-2";
-            this.editor.AddCanvas(canvas2);
+            this.editor.AddCanvas(canvas2);*/
             #endregion
 
             #region Menubar

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using mindmap.States;
+using mindmap.Shapes;
 
 namespace mindmap
 {
@@ -30,6 +31,8 @@ namespace mindmap
             ID = Guid.NewGuid();
             this.ChangeState(PreviewState.GetInstance()); //default initial state
         }
+
+        public abstract RectangleSegment getRect();
 
         public abstract bool Add(DrawingObject obj);
         public abstract bool Remove(DrawingObject obj);

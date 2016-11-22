@@ -110,5 +110,11 @@ namespace mindmap.Shapes
         {
             return false;
         }
+
+        public override RectangleSegment getRect()
+        {
+            //do nothing
+            return null;
+        }
     }
 }

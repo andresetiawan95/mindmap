@@ -14,6 +14,7 @@ namespace mindmap.Tools
         //merupakan class untuk implementasi Rectangle Tool (menggambar, menghapus, select object)
         private IPanel canvas;
         private RectangleSegment rectangle;
+        private TextSegment text;
         private ButtonObject buttonObject;
 
         public Cursor cursor
@@ -50,7 +51,7 @@ namespace mindmap.Tools
             Debug.WriteLine("Rectangle mouse down (untuk menggambar object baru) --> activated (Via class RectangleTool.cs");
             if (e.Button == MouseButtons.Left)
             {
-                this.rectangle = new RectangleSegment(e.X, e.Y);
+                this.rectangle = new RectangleSegment(e.X, e.Y, 150, 100);
                 Debug.WriteLine("Rectangle sudah digambar... (via class RectangleTool.cs)");
                 this.canvas.AddDrawingObject(this.rectangle);
                 this.canvas.AddRectangleObject(this.rectangle);
@@ -75,6 +76,13 @@ namespace mindmap.Tools
                     {
                         this.rectangle.Width = width;
                         this.rectangle.Height = height;
+                        this.rectangle.X2 = e.X;
+                        this.rectangle.Y2 = e.Y;
+                    }
+                    else
+                    {
+                        this.rectangle.X2 = this.rectangle.X + this.rectangle.Width;
+                        this.rectangle.Y2 = this.rectangle.Y + this.rectangle.Height;
                     }
                 }
             }
@@ -84,6 +92,10 @@ namespace mindmap.Tools
         {
             if (rectangle != null)
             {
+                text = new TextSegment();
+                text.Value = "Text";
+                text.Position = new System.Drawing.PointF((float)((this.rectangle.X + this.rectangle.X2) / 2) - (this.rectangle.Width / 10), (float)((this.rectangle.Y + this.rectangle.Y2) / 2) - (this.rectangle.Height / 10));
+                bool allowed = this.rectangle.Add(text);
                 if (e.Button == MouseButtons.Left)
                 {
                     //Debug.WriteLine("Rectangle mouse up left selected --> activated");

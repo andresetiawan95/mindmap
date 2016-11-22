@@ -15,10 +15,13 @@ namespace mindmap.Shapes
         public Guid nodeID;
         public int X { get; set; }
         public int Y { get; set; }
+        public int X2 { get; set; }
+        public int Y2 { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         private Pen pen;
         private List<DrawingObject> drawingObjects;
+        private TextSegment text;
 
         public RectangleSegment()
         {
@@ -114,9 +117,18 @@ namespace mindmap.Shapes
 
         public override bool Add(DrawingObject obj)
         {
-            drawingObjects.Add(obj);
-
-            return true;
+            bool isEmpty = !drawingObjects.Any();
+            if (!isEmpty)
+            {
+                Debug.WriteLine("Ada obj Text disini");
+                return false;
+            }
+            else
+            {
+                Debug.WriteLine("Tidak ada obj Text disini");
+                drawingObjects.Add(obj);
+                return true;
+            }
         }
 
         public override bool Remove(DrawingObject obj)
@@ -124,6 +136,12 @@ namespace mindmap.Shapes
             drawingObjects.Remove(obj);
 
             return true;
+        }
+
+        public override RectangleSegment getRect()
+        {
+            //do nothing
+            return this;
         }
     }
 }
