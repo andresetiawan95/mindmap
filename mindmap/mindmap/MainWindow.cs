@@ -86,7 +86,14 @@ namespace mindmap
 
             DefaultMenuItem exampleMenuItem3 = new DefaultMenuItem("Export");
             this.menubar.AddMenuItem(exampleMenuItem3);
-
+            DefaultMenuItem exampleMenuItem31 = new DefaultMenuItem("Image");
+            exampleMenuItem3.AddMenuItem(exampleMenuItem31);
+            DefaultMenuItem exampleMenuItem311 = new DefaultMenuItem("JPEG");
+            exampleMenuItem31.AddMenuItem(exampleMenuItem311);
+            DefaultMenuItem exampleMenuItem312 = new DefaultMenuItem("PNG");
+            exampleMenuItem31.AddMenuItem(exampleMenuItem312);
+            DefaultMenuItem exampleMenuItem32 = new DefaultMenuItem("PDF");
+            exampleMenuItem3.AddMenuItem(exampleMenuItem32);
             #endregion
 
             #region Toolbox
