@@ -71,6 +71,8 @@
     <Compile Include="IEditor.cs" />
     <Compile Include="IMenubar.cs" />
     <Compile Include="IMenuItem.cs" />
+    <Compile Include="IObservable.cs" />
+    <Compile Include="IObserver.cs" />
     <Compile Include="IPanel.cs" />
     <Compile Include="ITool.cs" />
     <Compile Include="IToolbar.cs" />

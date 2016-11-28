@@ -14,6 +14,7 @@ namespace mindmap
         public List<MindmapTree> child;
         public RectangleSegment node;
         public ButtonObject childBtnObject;
+        private TextSegment textSegmentChild;
         private IPanel canvas;
         public Guid nodeID;
         public int X { set; get; }
@@ -29,9 +30,10 @@ namespace mindmap
         public void AddChild()
         {
             this.X = node.X;
-            this.Y = (node.Y - 40);
+            this.Y = (node.Y - 60);
              
-            RectangleSegment newRect = new RectangleSegment(X, Y, 60, 30);
+            RectangleSegment newRect = new RectangleSegment(X, Y, 70, 50);
+            
             rectChild.Add(newRect);
             this.canvas.AddDrawingObject(newRect);
             this.canvas.AddRectangleObject(newRect);
@@ -40,6 +42,10 @@ namespace mindmap
             this.canvas.AddMindmapObject(mindmapTree);
             childBtnObject = new ButtonObject(X, Y, newRect.ID, this.canvas);
             this.canvas.AddButtonObject(childBtnObject);
+            textSegmentChild = new TextSegment();
+            textSegmentChild.Value = "Textchild";
+            textSegmentChild.Position = new System.Drawing.PointF((float)((newRect.X + (newRect.X + newRect.Width))/2), (float)((newRect.Y + (newRect.Y + newRect.Height)) / 2));
+            bool added = newRect.Add(textSegmentChild);
             newRect.Select();
             Debug.WriteLine("Jumlah Node : " + NumofChild());
         }

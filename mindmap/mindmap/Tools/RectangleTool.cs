@@ -51,13 +51,17 @@ namespace mindmap.Tools
             Debug.WriteLine("Rectangle mouse down (untuk menggambar object baru) --> activated (Via class RectangleTool.cs");
             if (e.Button == MouseButtons.Left)
             {
-                this.rectangle = new RectangleSegment(e.X, e.Y, 150, 100);
+                this.rectangle = new RectangleSegment(e.X, e.Y);
                 Debug.WriteLine("Rectangle sudah digambar... (via class RectangleTool.cs)");
                 this.canvas.AddDrawingObject(this.rectangle);
                 this.canvas.AddRectangleObject(this.rectangle);
                 Debug.WriteLine("Rectangle dimasukkan kedalam AddDrawingObject pada kanvas (via class RectangleTool.cs)");
                 this.buttonObject = new ButtonObject(e.X, e.Y, this.rectangle.ID, this.canvas);
                 this.canvas.AddButtonObject(this.buttonObject);
+
+                //set koordinat vertex VX1 dan VY1
+                this.rectangle.VX1 = e.X;
+                this.rectangle.VY1 = e.Y;
                 
             }
         }
@@ -78,6 +82,17 @@ namespace mindmap.Tools
                         this.rectangle.Height = height;
                         this.rectangle.X2 = e.X;
                         this.rectangle.Y2 = e.Y;
+
+                        //set koordinat VX2, VY2, VX3, VY3, VX4, VY4
+                        this.rectangle.VX2 = this.rectangle.VX1 + width;
+                        this.rectangle.VY2 = this.rectangle.VY1;
+
+                        this.rectangle.VX3 = this.rectangle.VX1;
+                        this.rectangle.VY3 = this.rectangle.VY1 + height;
+
+                        this.rectangle.VX4 = this.rectangle.VX1 + width;
+                        this.rectangle.VY4 = this.rectangle.VY1 + height;
+                        //done
                     }
                     else
                     {

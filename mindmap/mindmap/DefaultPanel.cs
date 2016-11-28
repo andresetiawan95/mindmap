@@ -40,7 +40,6 @@ namespace mindmap
         {
             RectangleSegment node = findRectangleByGuid(btnObject.btnID);
             if (node!=null)Debug.WriteLine("rectangle ID = " + node.ID);
-            Debug.WriteLine("RECTANGLE DITEMUKAN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             mindmapTree = findNodeTree(node.ID);
             if (mindmapTree == null)
             {
@@ -176,6 +175,18 @@ namespace mindmap
             }
 
             return obj;
+        }
+
+        public RectangleSegment GetRectangleObjectAt(int x, int y)
+        {
+            foreach (RectangleSegment rect in rectangleObjects)
+            {
+                if (rect.Intersect(x, y))
+                {
+                    return rect;
+                }
+            }
+            return null;
         }
 
         public void DeselectAllObjects()

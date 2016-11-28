@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace mindmap.Shapes
 {
-    public class LineSegment : DrawingObject
+    public class LineSegment : DrawingObject, IObservable, IObserver
     {
         private const double EPSILON = 3.0;
 
@@ -115,6 +115,21 @@ namespace mindmap.Shapes
         {
             //do nothing
             return null;
+        }
+
+        public void Subscribe(IObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Unsubscribe(IObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(int x, int y)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace mindmap
         void AddMindmapObject(MindmapTree mindmap);
         DrawingObject GetObjectAt(int x, int y);
         DrawingObject SelectObjectAt(int x, int y);
+        RectangleSegment GetRectangleObjectAt(int x, int y);
         ButtonObject SelectButtonObjectByID(Guid id);
         void MoveButton(int x, int y);
         void DeselectAllObjects();

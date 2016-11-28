@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace mindmap.Shapes
 {
-    public class RectangleSegment : DrawingObject
+    public class RectangleSegment : DrawingObject, IObservable, IObserver
     {
         public Guid nodeID;
         public int X { get; set; }
@@ -19,6 +19,18 @@ namespace mindmap.Shapes
         public int Y2 { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+
+        //koordinat tiap vertex pada rectangle
+        public int VX1 { get; set; }
+        public int VY1 { get; set; }
+        public int VX2 { get; set; }
+        public int VY2 { get; set; }
+        public int VX3 { get; set; }
+        public int VY3 { get; set; }
+        public int VX4 { get; set; }
+        public int VY4 { get; set; }
+
+
         private Pen pen;
         private List<DrawingObject> drawingObjects;
         private TextSegment text;
@@ -142,6 +154,21 @@ namespace mindmap.Shapes
         {
             //do nothing
             return this;
+        }
+
+        public void Subscribe(IObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Unsubscribe(IObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(int x, int y)
+        {
+            throw new NotImplementedException();
         }
     }
 }
