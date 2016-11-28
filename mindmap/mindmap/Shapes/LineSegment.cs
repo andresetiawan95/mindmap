@@ -12,6 +12,10 @@ namespace mindmap.Shapes
     public class LineSegment : DrawingObject, IObservable, IObserver
     {
         private const double EPSILON = 3.0;
+        public int xstart { set; get; }
+        public int ystart { set; get; }
+        public int xfinish { set; get; }
+        public int yfinish { set; get; }
 
         public Point Startpoint { get; set; }
         public Point Endpoint { get; set; }
