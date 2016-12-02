@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonObject.cs" />
+    <Compile Include="Command\MoveCommand.cs" />
+    <Compile Include="Command\UnDoRedo.cs" />
     <Compile Include="DefaultEditor.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -164,6 +166,8 @@
   <ItemGroup>
     <Content Include="bin\Debug\mindmap.vshost.exe" />
     <Content Include="obj\Debug\mindmap.csproj.FileListAbsolute.txt" />
+    <Content Include="Resources\redo.png" />
+    <Content Include="Resources\undo.png" />
     <None Include="Resources\addnewicon.png" />
     <Content Include="Resources\cursor.png" />
   </ItemGroup>

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using mindmap.Shapes;
+using mindmap.Command;
 
 namespace mindmap.Tools
 {
@@ -38,6 +39,20 @@ namespace mindmap.Tools
             set
             {
                 this.canvas = value;
+            }
+        }
+
+        private UnDoRedo _UnDoObject;
+
+        public UnDoRedo UnDoObject
+        {
+            get
+            {
+                return _UnDoObject;
+            }
+            set
+            {
+                _UnDoObject = value;
             }
         }
 

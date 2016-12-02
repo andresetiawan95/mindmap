@@ -9,5 +9,6 @@ namespace mindmap
     public interface ICommand
     {
         void Execute();
+        void Unexecute();
     }
 }

@@ -11,6 +11,7 @@ using System.Diagnostics;
 using mindmap.ToolbarItems;
 using mindmap.MenuItems;
 using mindmap.Tools;
+using mindmap.Command;
 
 namespace mindmap
 {
@@ -31,21 +32,27 @@ namespace mindmap
         {
             Debug.WriteLine("Initializing UI objects.");
 
+            IPanel canvas1 = new DefaultPanel();
+
             #region Toolbar
 
-            /*// Initializing toolbar
+            // Initializing toolbar
             Debug.WriteLine("Loading toolbar...");
             this.toolbar = new DefaultToolbar();
             this.toolStripContainer1.TopToolStripPanel.Controls.Add((Control)this.toolbar);
 
-            ToolbarItem toolItem1 = new ToolbarItem();
+            UnDoRedo undoredo = new UnDoRedo();
+
+            ToolbarItem toolItem1 = new ToolbarItem("undo", IconSet.undo, canvas1);
+            toolItem1.UnDoObject = undoredo;
             //toolItem1.SetCommand(whiteCanvasBgCmd);
-            ToolbarItem toolItem2 = new ToolbarItem();
+            ToolbarItem toolItem2 = new ToolbarItem("redo", IconSet.redo, canvas1);
+            toolItem2.UnDoObject = undoredo;
             //toolItem2.SetCommand(blackCanvasBgCmd);
 
             this.toolbar.AddToolbarItem(toolItem1);
             this.toolbar.AddSeparator();
-            this.toolbar.AddToolbarItem(toolItem2);*/
+            this.toolbar.AddToolbarItem(toolItem2);
 
             #endregion
 
@@ -54,7 +61,7 @@ namespace mindmap
             this.editor = new DefaultEditor();
             this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.editor);
 
-            IPanel canvas1 = new DefaultPanel();
+            
             canvas1.Name = "Untitled-1";
             this.editor.AddCanvas(canvas1);
 
@@ -103,7 +110,9 @@ namespace mindmap
 
             // Initializing tools
             Debug.WriteLine("Loading tools...");
-            this.toolbox.AddTool(new SelectionTool());
+            ITool selectionTool = new SelectionTool();
+            selectionTool.UnDoObject = undoredo;
+            this.toolbox.AddTool(selectionTool);
             this.toolbox.AddSeparator();
             this.toolbox.AddTool(new LineTool());
             this.toolbox.AddTool(new RectangleTool());
