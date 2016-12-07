@@ -45,9 +45,9 @@ namespace mindmap
             this.newRect.VX1 = this.newRect.X;
             this.newRect.VY1 = this.newRect.Y;
             
-                    //set koordinat VX2, VY2
-            this.newRect.VX2 = this.newRect.VX1 + this.newRect.Width;*
-            this.newRect.VY2 = this.newRect.VY1;*
+            //set koordinat VX2, VY2
+            this.newRect.VX2 = this.newRect.VX1 + this.newRect.Width;
+            this.newRect.VY2 = this.newRect.VY1;
 
             this.newRect.VX3 = this.newRect.VX1;
             this.newRect.VY3 = this.newRect.VY1 + this.newRect.Height;
