@@ -44,6 +44,23 @@ namespace mindmap
             //set koordinat VX1
             this.newRect.VX1 = this.newRect.X;
             this.newRect.VY1 = this.newRect.Y;
+            
+                    //set koordinat VX2, VY2
+            this.newRect.VX2 = this.newRect.VX1 + this.newRect.Width;*
+            this.newRect.VY2 = this.newRect.VY1;*
+
+            this.newRect.VX3 = this.newRect.VX1;
+            this.newRect.VY3 = this.newRect.VY1 + this.newRect.Height;
+
+            this.newRect.VX4 = this.newRect.VX1 + this.newRect.Width;
+            this.newRect.VY4 = this.newRect.VY1 + this.newRect.Height;
+
+            lineChild = new LineSegment(new System.Drawing.Point(((node.VX2 - node.VX1)/4)*NumofChild() + node.VX1, node.VY1), new System.Drawing.Point((newRect.VX3 + newRect.VX4)/2, newRect.VY3));
+            this.canvas.AddDrawingObject(lineChild);
+            node.Subscribe(lineChild);
+            newRect.Subscribe(lineChild);
+            lineChild.AddVertexStartObject(node);
+            lineChild.AddVertexEndObject(newRect);
 
             MindmapTree mindmapTree = new MindmapTree(newRect, this.canvas);
             child.Add(mindmapTree);
@@ -51,7 +68,7 @@ namespace mindmap
             childBtnObject = new ButtonObject(X, Y, newRect.ID, this.canvas);
             this.canvas.AddButtonObject(childBtnObject);
             textSegmentChild = new TextSegment();
-            textSegmentChild.Value = "Textchild";
+            textSegmentChild.Value = "Child";
             textSegmentChild.Position = new System.Drawing.PointF((float)((newRect.X + (newRect.X + newRect.Width))/2), (float)((newRect.Y + (newRect.Y + newRect.Height)) / 2));
             bool added = newRect.Add(textSegmentChild);
             newRect.Select();
