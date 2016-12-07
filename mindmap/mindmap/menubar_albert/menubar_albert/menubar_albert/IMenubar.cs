@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace mindmap
+namespace menubar_albert
 {
-    public interface ICommand
+    public interface IMenubar
     {
-        void Execute();
+        void AddMenuItem(IMenuItem menuItem);
+
     }
 }

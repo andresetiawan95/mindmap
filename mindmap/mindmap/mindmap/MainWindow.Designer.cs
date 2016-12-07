@@ -37,11 +37,11 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(527, 314);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(640, 480);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(527, 339);
+            this.toolStripContainer1.Size = new System.Drawing.Size(640, 480);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 339);
+            this.ClientSize = new System.Drawing.Size(640, 480);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "MainWindow";
             this.Text = "Mind It!";
