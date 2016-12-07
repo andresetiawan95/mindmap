@@ -16,7 +16,9 @@ namespace mindmap.Shapes
         public int ystart { set; get; }
         public int xfinish { set; get; }
         public int yfinish { set; get; }
-
+        private DrawingObject startVertexObject;
+        private DrawingObject endVertexObject;
+        
         public Point Startpoint { get; set; }
         public Point Endpoint { get; set; }
 
