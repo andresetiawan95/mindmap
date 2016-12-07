@@ -15,10 +15,13 @@ namespace mindmap
         public RectangleSegment node;
         public ButtonObject childBtnObject;
         private TextSegment textSegmentChild;
+        private RectangleSegment newRect;
+        private LineSegment lineChild;
         private IPanel canvas;
         public Guid nodeID;
         public int X { set; get; }
         public int Y { set; get; }
+
         public MindmapTree(RectangleSegment rec, IPanel panel)
         {
             this.child = new List<MindmapTree>();
@@ -29,14 +32,19 @@ namespace mindmap
         }
         public void AddChild()
         {
-            this.X = node.X;
-            this.Y = (node.Y - 60);
-             
-            RectangleSegment newRect = new RectangleSegment(X, Y, 70, 50);
+            this.X = node.VX1 + 75 * NumofChild();
+            this.Y = (node.VY1 - 120);
+
+            this.newRect = new RectangleSegment(X, Y, 70, 50);
             
             rectChild.Add(newRect);
             this.canvas.AddDrawingObject(newRect);
             this.canvas.AddRectangleObject(newRect);
+
+            //set koordinat VX1
+            this.newRect.VX1 = this.newRect.X;
+            this.newRect.VY1 = this.newRect.Y;
+
             MindmapTree mindmapTree = new MindmapTree(newRect, this.canvas);
             child.Add(mindmapTree);
             this.canvas.AddMindmapObject(mindmapTree);
