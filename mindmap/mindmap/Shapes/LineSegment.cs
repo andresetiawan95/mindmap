@@ -135,5 +135,13 @@ namespace mindmap.Shapes
         {
             throw new NotImplementedException();
         }
+        public void AddVertexStartObject(DrawingObject obj)
+        {
+            this.startVertexObject = obj;
+        }
+        public void AddVertexEndObject(DrawingObject obj)
+        {
+            this.endVertexObject = obj;
+        }
     }
 }
