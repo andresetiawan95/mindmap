@@ -52,7 +52,7 @@ namespace mindmap
         }
         private RectangleSegment findRectangleByGuid(Guid id)
         {
-            foreach (RectangleSegment drwObj in drawingObjects)
+            foreach (RectangleSegment drwObj in rectangleObjects)
             {
                 if (drwObj.ID == id) return drwObj;
             }

@@ -18,14 +18,17 @@ namespace mindmap.Shapes
         public int yfinish { set; get; }
         private DrawingObject startVertexObject;
         private DrawingObject endVertexObject;
-        
+
         public Point Startpoint { get; set; }
         public Point Endpoint { get; set; }
+
+        private List<IObserver> observerObjects;
 
         private Pen pen;
 
         public LineSegment()
         {
+            this.observerObjects = new List<IObserver>();
             this.pen = new Pen(Color.Black);
             pen.Width = 1.5f;
         }
@@ -125,7 +128,7 @@ namespace mindmap.Shapes
 
         public void Subscribe(IObserver observer)
         {
-            throw new NotImplementedException();
+            this.observerObjects.Add(observer);
         }
 
         public void Unsubscribe(IObserver observer)
@@ -135,7 +138,32 @@ namespace mindmap.Shapes
 
         public void Update(int x, int y)
         {
-            throw new NotImplementedException();
+
+            //throw new NotImplementedException();
+        }
+        public void UpdateVertexCoordinate(int xAmount, int yAmount, DrawingObject drwObj)
+        {
+            //if (vertex == this.Startpoint)
+            //{
+            //    Debug.WriteLine("Line vertex Sama dengan startpoint");
+            //   Startpoint.X += xAmount;
+            // Startpoint.Y += yAmount;
+            //}
+            //else if (vertex == this.Endpoint)
+            //{
+            //   Debug.WriteLine("Line vertex Sama dengan endpoint");
+            //  this.Endpoint = new Point(this.Endpoint.X + xAmount, this.Endpoint.Y + yAmount);
+            //}
+            if (drwObj == startVertexObject)
+            {
+                this.Startpoint = new Point(this.Startpoint.X + xAmount, this.Startpoint.Y + yAmount);
+                Debug.WriteLine("Startpoint aktif");
+            }
+            else
+            {
+                this.Endpoint = new Point(this.Endpoint.X + xAmount, this.Endpoint.Y + yAmount);
+                Debug.WriteLine("End aktif");
+            }
         }
         public void AddVertexStartObject(DrawingObject obj)
         {

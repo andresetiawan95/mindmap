@@ -30,9 +30,10 @@ namespace mindmap.Shapes
         public int VX4 { get; set; }
         public int VY4 { get; set; }
 
-
+        public int lineVertex { set; get; }
         private Pen pen;
         private List<DrawingObject> drawingObjects;
+        private List<IObserver> observerObjects;
         private TextSegment text;
 
         public RectangleSegment()
@@ -41,6 +42,7 @@ namespace mindmap.Shapes
             this.pen = new Pen(Color.Black);
             pen.Width = 1.5f;
             drawingObjects = new List<DrawingObject>();
+            observerObjects = new List<IObserver>();
         }
 
         public RectangleSegment(int x, int y)
@@ -112,7 +114,20 @@ namespace mindmap.Shapes
         {
             this.X += xAmount;
             this.Y += yAmount;
+            this.VX1 += xAmount;
+            this.VY1 += yAmount;
+            this.VX2 = this.VX1 + Width;
+            this.VY2 = this.VY1;
 
+            this.VX3 = this.VX1;
+            this.VY3 = this.VY1 + Height;
+
+            this.VX4 = this.VX1 + Width;
+            this.VY4 = this.VY1 + Height;
+            foreach (IObserver obsObj in observerObjects)
+            {
+                obsObj.UpdateVertexCoordinate(xAmount, yAmount, this);
+            }
             foreach (DrawingObject obj in drawingObjects)
             {
                 obj.Translate(x, y, xAmount, yAmount);
@@ -158,7 +173,9 @@ namespace mindmap.Shapes
 
         public void Subscribe(IObserver observer)
         {
-            throw new NotImplementedException();
+            this.observerObjects.Add(observer);
+            Debug.WriteLine("Line observer added to rectangle");
+            //throw new NotImplementedException();
         }
 
         public void Unsubscribe(IObserver observer)
@@ -168,7 +185,12 @@ namespace mindmap.Shapes
 
         public void Update(int x, int y)
         {
-            throw new NotImplementedException();
+            foreach (IObserver obsObj in observerObjects)
+            {
+                obsObj.UpdateVertexCoordinate(x, y, this);
+            }
+            //throw new NotImplementedException();
         }
+        public void UpdateVertexCoordinate(int x, int y, DrawingObject drwObj) { }
     }
 }
