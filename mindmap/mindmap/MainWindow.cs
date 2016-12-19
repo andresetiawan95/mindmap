@@ -63,6 +63,7 @@ namespace mindmap
 
             
             canvas1.Name = "Untitled-1";
+            canvas1.UnDoObject = undoredo;
             this.editor.AddCanvas(canvas1);
 
             /*IPanel canvas2 = new DefaultPanel();

@@ -59,6 +59,14 @@ namespace mindmap.Shapes
             this.Height = height;
         }
 
+        public void setInitRectangle(int x, int y, int width, int height)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Width = width;
+            this.Height = height;
+        }
+
         public override bool Intersect(int xTest, int yTest)
         {
             if ((xTest >= X && xTest <= X + Width) && (yTest >= Y && yTest <= Y + Height))

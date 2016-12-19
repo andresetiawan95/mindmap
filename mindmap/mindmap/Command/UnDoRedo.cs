@@ -50,11 +50,8 @@ namespace mindmap.Command
                 if (_Undocommands.Count != 0)
                 {
                     ICommand command = _Undocommands.Pop();
-                    if (command is MoveCommand)
-                    {
-                        command.Unexecute();
-                        _Redocommands.Push(command);
-                    }
+                    command.Unexecute();
+                    _Redocommands.Push(command);
                 }
 
             }
@@ -88,7 +85,7 @@ namespace mindmap.Command
             }
         }*/
 
-        public void InsertInUnDoRedoForMove(ICommand command)
+        public void InsertInUnDoRedo(ICommand command)
         {
             _Undocommands.Push(command); _Redocommands.Clear();
             if (EnableDisableUndoRedoFeature != null)

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using mindmap.Shapes;
+using mindmap.Command;
 
 namespace mindmap
 {
@@ -36,6 +37,20 @@ namespace mindmap
             this.MouseMove += DefaultCanvas_MouseMove;
         }
 
+        private UnDoRedo _UnDoObject;
+
+        public UnDoRedo UnDoObject
+        {
+            get
+            {
+                return _UnDoObject;
+            }
+            set
+            {
+                _UnDoObject = value;
+            }
+        }
+
         private void Button_Click(object sender, EventArgs e)
         {
             RectangleSegment node = findRectangleByGuid(btnObject.btnID);
@@ -46,7 +61,9 @@ namespace mindmap
                 mindmapTree = new MindmapTree(node, this.tools.TargetCanvas);
                 AddMindmapObject(mindmapTree);
             }
+            mindmapTree.UnDoObject = _UnDoObject;
             mindmapTree.AddChild();
+            Repaint();
             //MessageBox.Show("Tombol dengan ID "+btnObject.btnID+" telah diklik.");
 
         }
@@ -143,13 +160,26 @@ namespace mindmap
             Button btn = buttonObject.InitiateButton();
             this.buttonObjects.Add(buttonObject);
             this.Controls.Add(btn);
+            
             this.button = btn;
 
             this.button.Click += Button_Click;
         }
+        public void RemoveButtonObject(ButtonObject buttonObject)
+        {
+            this.Controls.Remove(buttonObject.getButton());
+        }
         public void RemoveDrawingObject(DrawingObject drawingObject)
         {
             this.drawingObjects.Remove(drawingObject);
+        }
+        public int sumDrawingObjects()
+        {
+            return drawingObjects.Count;
+        }
+        public DrawingObject getFromListObject(int index)
+        {
+            return drawingObjects[index];
         }
 
         public DrawingObject GetObjectAt(int x, int y)

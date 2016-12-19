@@ -17,9 +17,20 @@ namespace mindmap
         public int X { set; get; }
         public int Y { set; get; }
         public Guid btnID { get; set; }
+        public ButtonObject()
+        {
+            this.size = new Size(20, 20);
+        }
         public ButtonObject(int x, int y, Guid id, IPanel panel)
         {
             this.size = new Size(20, 20);
+            this.btnID = id;
+            this.X = x;
+            this.Y = y;
+            this.canvas = panel;
+        }
+        public void setButton(int x, int y, Guid id, IPanel panel)
+        {
             this.btnID = id;
             this.X = x;
             this.Y = y;

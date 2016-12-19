@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonObject.cs" />
+    <Compile Include="Command\AddChildCommand.cs" />
     <Compile Include="Command\MoveCommand.cs" />
     <Compile Include="Command\UnDoRedo.cs" />
     <Compile Include="DefaultEditor.cs">

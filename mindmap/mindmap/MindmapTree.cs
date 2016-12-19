@@ -5,11 +5,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mindmap.Command;
 
 namespace mindmap
 {
     public class MindmapTree
     {
+        private AddChildCommand addChild;
+        public Guid nodeID;
         public List<RectangleSegment> rectChild;
         public List<MindmapTree> child;
         public RectangleSegment node;
@@ -18,70 +21,43 @@ namespace mindmap
         private RectangleSegment newRect;
         private LineSegment lineChild;
         private IPanel canvas;
-        public Guid nodeID;
         public int X { set; get; }
         public int Y { set; get; }
 
+        private UnDoRedo _UnDoObject;
+
+        public UnDoRedo UnDoObject
+        {
+            get
+            {
+                return _UnDoObject;
+            }
+            set
+            {
+                _UnDoObject = value;
+            }
+        }
+
         public MindmapTree(RectangleSegment rec, IPanel panel)
         {
+            this.nodeID = rec.ID;
             this.child = new List<MindmapTree>();
             this.rectChild = new List<RectangleSegment>();
             this.node = rec;
             this.canvas = panel;
-            this.nodeID = rec.ID;
         }
         public void AddChild()
         {
-            this.X = node.VX1 + 75 * NumofChild();
-            this.Y = (node.VY1 - 120);
-
-            this.newRect = new RectangleSegment(X, Y, 70, 50);
-            
-            rectChild.Add(newRect);
-            this.canvas.AddDrawingObject(newRect);
-            this.canvas.AddRectangleObject(newRect);
-
-            //set koordinat VX1
-            this.newRect.VX1 = this.newRect.X;
-            this.newRect.VY1 = this.newRect.Y;
-            
-            //set koordinat VX2, VY2
-            this.newRect.VX2 = this.newRect.VX1 + this.newRect.Width;
-            this.newRect.VY2 = this.newRect.VY1;
-
-            this.newRect.VX3 = this.newRect.VX1;
-            this.newRect.VY3 = this.newRect.VY1 + this.newRect.Height;
-
-            this.newRect.VX4 = this.newRect.VX1 + this.newRect.Width;
-            this.newRect.VY4 = this.newRect.VY1 + this.newRect.Height;
-
-            lineChild = new LineSegment(new System.Drawing.Point(((node.VX2 - node.VX1)/4)*NumofChild() + node.VX1, node.VY1), new System.Drawing.Point((newRect.VX3 + newRect.VX4)/2, newRect.VY3));
-            this.canvas.AddDrawingObject(lineChild);
-            node.Subscribe(lineChild);
-            newRect.Subscribe(lineChild);
-            lineChild.AddVertexStartObject(node);
-            lineChild.AddVertexEndObject(newRect);
-
-            MindmapTree mindmapTree = new MindmapTree(newRect, this.canvas);
-            child.Add(mindmapTree);
-            this.canvas.AddMindmapObject(mindmapTree);
-            childBtnObject = new ButtonObject(X, Y, newRect.ID, this.canvas);
-            this.canvas.AddButtonObject(childBtnObject);
-            textSegmentChild = new TextSegment();
-            textSegmentChild.Value = "Child";
-            textSegmentChild.Position = new System.Drawing.PointF((float)((newRect.X + (newRect.X + newRect.Width))/2), (float)((newRect.Y + (newRect.Y + newRect.Height)) / 2));
-            bool added = newRect.Add(textSegmentChild);
-            newRect.Select();
-            Debug.WriteLine("Jumlah Node : " + NumofChild());
+            this.addChild = new AddChildCommand(this.canvas, new RectangleSegment(), new LineSegment(), new TextSegment()
+            , new ButtonObject(), this.nodeID, this.rectChild, this.child, this.node);
+            this.addChild.Execute();
+            UnDoObject.InsertInUnDoRedo(this.addChild);
         }
         public void traverse()
         {
 
             //implemented later
         }
-        public int NumofChild()
-        {
-            return rectChild.Count;
-        }
+        
     }
 }

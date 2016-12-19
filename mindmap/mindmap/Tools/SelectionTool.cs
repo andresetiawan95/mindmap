@@ -17,6 +17,7 @@ namespace mindmap.Tools
         private int xInitial;
         private int yInitial;*/
         private MoveCommand move;
+        private bool boolMove = false;
 
         public Cursor cursor
         {
@@ -103,15 +104,18 @@ namespace mindmap.Tools
                     this.move.e = e;
 
                     this.move.move();
+                    this.boolMove = true;
                 }
             }
         }
 
         public void ToolMouseUp(object sender, MouseEventArgs e)
         {
-            if (this.move.selectedObject != null)
+            if (this.move.selectedObject != null && this.boolMove == true)
             {
-                UnDoObject.InsertInUnDoRedoForMove(move);
+                Debug.WriteLine("MASUKK SINI!");
+                UnDoObject.InsertInUnDoRedo(move);
+                this.boolMove = false;
             }
         }
     }

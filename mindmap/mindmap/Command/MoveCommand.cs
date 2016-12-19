@@ -51,7 +51,7 @@ namespace mindmap.Command
             {
                 selectedObject.Translate(xInit, yInit, xInit - xInitial, yInit - yInitial);
                 selectedBtnObject.Translate(xInit, yInit, xInit - xInitial, yInit - yInitial);
-                Debug.WriteLine("xInitial: " + xInitial + " yInitial: " + yInitial + " deltaX: " + xInit + " deltaY: " + yInit);
+                Debug.WriteLine("btnObject: " + selectedBtnObject.btnID);
             }
         }
     }

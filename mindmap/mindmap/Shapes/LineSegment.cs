@@ -45,6 +45,12 @@ namespace mindmap.Shapes
             this.Endpoint = endpoint;
         }
 
+        public void setPoint(Point startpoint, Point endpoint)
+        {
+            this.Startpoint = startpoint;
+            this.Endpoint = endpoint;
+        }
+
         public override void RenderOnStaticView()
         {
             pen.Color = Color.Black;
