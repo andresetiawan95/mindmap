@@ -65,6 +65,8 @@
     <Compile Include="DefaultToolbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormLayout\DefaultTextbox.cs" />
+    <Compile Include="FormLayout\ITextBox.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IconSet.Designer.cs">
       <AutoGen>True</AutoGen>
