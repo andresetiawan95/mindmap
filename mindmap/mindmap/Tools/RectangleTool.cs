@@ -126,6 +126,7 @@ namespace mindmap.Tools
                 text.Value = "Text";
                 text.Position = new System.Drawing.PointF((float)((this.rectangle.X + this.rectangle.X2) / 2) - (this.rectangle.Width / 10), (float)((this.rectangle.Y + this.rectangle.Y2) / 2) - (this.rectangle.Height / 10));
                 bool allowed = this.rectangle.Add(text);
+                this.rectangle.SetTextSegment(text);
                 if (e.Button == MouseButtons.Left)
                 {
                     //Debug.WriteLine("Rectangle mouse up left selected --> activated");
@@ -137,6 +138,11 @@ namespace mindmap.Tools
                     canvas.RemoveDrawingObject(this.rectangle);
                 }
             }
+        }
+
+        public void ToolMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }

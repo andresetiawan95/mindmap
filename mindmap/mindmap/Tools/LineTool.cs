@@ -204,5 +204,10 @@ namespace mindmap.Tools
                 }
             }
         }
+
+        public void ToolMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            
+        }
     }
 }

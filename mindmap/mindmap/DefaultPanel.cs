@@ -35,6 +35,7 @@ namespace mindmap
             this.MouseDown += DefaultCanvas_MouseDown;
             this.MouseUp += DefaultCanvas_MouseUp;
             this.MouseMove += DefaultCanvas_MouseMove;
+            this.MouseDoubleClick += DefaultCanvas_MouseDoubleClick;
         }
 
         private UnDoRedo _UnDoObject;
@@ -130,6 +131,15 @@ namespace mindmap
                 //Debug.WriteLine("Tool Mouse Down dijalankan dari class DefaultPanel.cs...");
                 this.tools.ToolMouseDown(sender, e);
                // Debug.WriteLine("Perintah repaint akan dijalankan (method DefaultCanvas_MouseDown");
+                this.Repaint();
+            }
+        }
+
+        private void DefaultCanvas_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.tools != null)
+            {
+                this.tools.ToolMouseDoubleClick(sender, e);
                 this.Repaint();
             }
         }

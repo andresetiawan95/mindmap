@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using mindmap.Command;
+using mindmap.Shapes;
 
 namespace mindmap.Tools
 {
@@ -18,6 +19,7 @@ namespace mindmap.Tools
         private int yInitial;*/
         private MoveCommand move;
         private bool boolMove = false;
+        private RectangleSegment rectangle;
 
         public Cursor cursor
         {
@@ -78,6 +80,7 @@ namespace mindmap.Tools
                 Debug.WriteLine("Memanggil method SelectObjectAt pada Panel(DefaultPanel) melalui SelectionTool.cs..");
                 //selectedObject = canvas.SelectObjectAt(e.X, e.Y);
                 this.move.selectedObject = canvas.SelectObjectAt(e.X, e.Y);
+                this.rectangle = canvas.GetRectangleObjectAt(e.X, e.Y);
                 if (this.move.selectedObject != null)
                 {
                     canvas.GetButton(this.move.selectedObject.ID);
@@ -117,6 +120,12 @@ namespace mindmap.Tools
                 UnDoObject.InsertInUnDoRedo(move);
                 this.boolMove = false;
             }
+        }
+
+        public void ToolMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            TextWindow textwindow = new TextWindow(this.canvas, this.rectangle.GetTextSegment());
+            textwindow.Show();
         }
     }
 }

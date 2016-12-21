@@ -150,6 +150,19 @@ namespace mindmap.Shapes
             return this.Y;
         }
 
+        public void SetTextSegment(TextSegment text)
+        {
+            this.text = text;
+        }
+        public TextSegment GetTextSegment()
+        {
+            if (this.text != null)
+            {
+                return this.text;
+            }
+            return null;
+        }
+
         public override bool Add(DrawingObject obj)
         {
             bool isEmpty = !drawingObjects.Any();

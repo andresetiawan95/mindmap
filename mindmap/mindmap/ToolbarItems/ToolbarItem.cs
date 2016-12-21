@@ -78,5 +78,9 @@ namespace mindmap.ToolbarItems
         {
             throw new NotImplementedException();
         }
+        public void ToolMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
