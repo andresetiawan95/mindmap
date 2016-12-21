@@ -64,6 +64,7 @@ namespace mindmap.FormLayout
         private void Btn_Click(object sender, EventArgs e)
         {
             this.text.Value = this.textbox.Text;
+            this.canvas.Repaint();
         }
         public void SetInitText()
         {
